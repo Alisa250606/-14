@@ -70,6 +70,51 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const currentDate = new Date();
         const bookingDate = new Date(date);
+        // Перевірка, чи дата бронювання не в минулому
+        if (bookingDate < currentDate) {
+            alert('Ви не можете забронювати квитки на минулу дату.');
+            return;
+        }
+
+        // Перевірка, чи всі поля заповнені
+        if (!fullName  !departure  !destination  !date  !departureTime  !passengers  seatSelects.length !== passengers) {
+            alert('Будь ласка, заповніть всі поля форми та оберіть місця для всіх пасажирів.');
+            return;
+        }
+
+        // Перевірка на однакові місця відправлення та прибуття
+        if (departure === destination) {
+            alert('Місце відправлення не може бути однакове з місцем прибуття.');
+            return;
+        }
+
+        // Перевірка, чи всі місця вибрані
+        let allSeatsSelected = true;
+        seatSelects.forEach(select => {
+            if (!select.value) {
+                allSeatsSelected = false;
+            }
+        });
+
+        if (!allSeatsSelected) {
+            alert('Будь ласка, виберіть місце для кожного пасажира.');
+            return;
+        }
+
+        // Розрахунок загальної суми
+        const totalAmount = passengers * price;
+
+        // Формуємо повідомлення підтвердження
+        const ticketWord = passengers > 1 ? 'квитки' : 'квиток';
+        let seatsList = '';
+        seatSelects.forEach(select => {
+            seatsList += ${select.value}\n;
+        });
+
+        const message = Ви успішно забронювали ${passengers} ${ticketWord} з ${departure} до ${destination} на ${date}, о ${departureTime}.\n\n +
+            ПІБ: ${fullName}\n +
+            Обрані місця:\n${seatsList}\n +
+            Загальна сума до сплати: ${totalAmount} грн.;
                 }
 
                 seatsSelection.appendChild(seatSelect);
