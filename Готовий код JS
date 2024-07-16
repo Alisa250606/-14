@@ -1,0 +1,133 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const departureSelect = document.getElementById('departure');
+    const destinationSelect = document.getElementById('destination');
+    const passengersInput = document.getElementById('passengers');
+    const seatsSelection = document.getElementById('seats-selection');
+    const price = parseFloat(document.getElementById('price').value);
+
+ 
+    function updateSeats() {
+        seatsSelection.innerHTML = ''; 
+
+        const numPassengers = parseInt(passengersInput.value, 10);
+
+        if (numPassengers > 0) {
+            for (let i = 0; i < numPassengers; i++) {
+                const seatSelect = document.createElement('select');
+                seatSelect.className = 'seat';
+                seatSelect.name = seat-${i};
+                seatSelect.required = true;
+                seatSelect.innerHTML = '<option value="" disabled selected>Оберіть місце</option>';
+
+               
+                for (let j = 1; j <= 3; j++) {
+                    ['A', 'B'].forEach(row => {
+                        const value = ${j}${row};
+                        const option = document.createElement('option');
+                        option.value = value;
+                        option.textContent = value;
+                        seatSelect.appendChild(option);
+                    });
+                }
+
+                seatsSelection.appendChild(seatSelect);
+                seatsSelection.appendChild(document.createElement('br'));
+            }
+        }
+    }
+
+   
+    function checkLocations() {
+        const departure = departureSelect.value;
+        const destination = destinationSelect.value;
+
+      
+        if (departure === destination) {
+        
+            destinationSelect.value = '';
+            alert('Місце відправлення не може бути однакове з місцем прибуття.');
+        }
+
+      
+        Array.from(destinationSelect.options).forEach(option => {
+            if (option.value === departure && departure) {
+                option.disabled = true;
+            } else {
+                option.disabled = false;
+            }
+        });
+    }
+
+    
+    passengersInput.addEventListener('input', updateSeats);
+
+  
+    departureSelect.addEventListener('change', checkLocations);
+    destinationSelect.addEventListener('change', checkLocations);
+
+    document.getElementById('booking-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const fullName = document.getElementById('full-name').value;
+        const departure = departureSelect.value;
+        const destination = destinationSelect.value;
+        const date = document.getElementById('date').value;
+        const departureTime = document.getElementById('departure-time').value; 
+        const passengers = parseInt(passengersInput.value, 10);
+        const seatSelects = document.querySelectorAll('#seats-selection .seat');
+
+        const currentDate = new Date();
+        const bookingDate = new Date(date);
+
+       
+        if (bookingDate < currentDate) {
+            alert('Ви не можете забронювати квитки на минулу дату.');
+            return;
+        }
+
+       
+        if (!fullName  !departure  !destination  !date  !departureTime  !passengers  seatSelects.length !== passengers) {
+            alert('Будь ласка, заповніть всі поля форми та оберіть місця для всіх пасажирів.');
+            return;
+        }
+
+     
+        if (departure === destination) {
+            alert('Місце відправлення не може бути однакове з місцем прибуття.');
+            return;
+        }
+
+      
+        let allSeatsSelected = true;
+        seatSelects.forEach(select => {
+            if (!select.value) {
+                allSeatsSelected = false;
+            }
+        });
+
+        if (!allSeatsSelected) {
+            alert('Будь ласка, виберіть місце для кожного пасажира.');
+            return;
+        }
+
+      
+        const totalAmount = passengers * price;
+const ticketWord = passengers > 1 ? 'квитки' : 'квиток';
+        let seatsList = '';
+        seatSelects.forEach(select => {
+            seatsList += ${select.value}\n;
+        });
+
+        const message = Ви успішно забронювали ${passengers} ${ticketWord} з ${departure} до ${destination} на ${date}, о ${departureTime}.\n\n +
+            ПІБ: ${fullName}\n +
+            Обрані місця:\n${seatsList}\n +
+            Загальна сума до сплати: ${totalAmount} грн.;
+
+       
+        document.getElementById('confirmation-message').textContent = message;
+        document.getElementById('confirmation').style.display = 'block';
+    });
+
+  
+    updateSeats();
+});
