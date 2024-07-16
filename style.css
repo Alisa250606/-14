@@ -47,3 +47,33 @@ input[type=text], input[type=date], input[type=number], select {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    background-color: rgb(7, 16, 90);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+#confirmation {
+    margin-top: 20px;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgb(7, 16, 90);
+    display: none; /* Приховуємо спливаюче вікно підтвердження за замовчуванням */
+}
+
+#confirmation h2 {
+    margin-bottom: 10px;
+}
+
+#confirmation-message {
+    white-space: pre-line;
+}
