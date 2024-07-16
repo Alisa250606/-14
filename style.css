@@ -20,7 +20,6 @@ header {
 main {
     margin: 20px;
 }
-
 .form-container {
     max-width: 600px;
     margin: 20px auto;
@@ -28,4 +27,23 @@ main {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.form-group {
+    margin-bottom: 15px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type=text], input[type=date], input[type=number], select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
