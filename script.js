@@ -28,6 +28,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         option.textContent = value;
                         seatSelect.appendChild(option);
                     });
+                     }
+
+                seatsSelection.appendChild(seatSelect);
+                seatsSelection.appendChild(document.createElement('br'));
+            }
+        }
+    }
                     // Функція для перевірки вибраних місць
     function checkLocations() {
         const departure = departureSelect.value;
@@ -115,10 +122,12 @@ document.addEventListener('DOMContentLoaded', function() {
             ПІБ: ${fullName}\n +
             Обрані місця:\n${seatsList}\n +
             Загальна сума до сплати: ${totalAmount} грн.;
-                }
+    
+                // Відображаємо підтвердження на сторінці
+        document.getElementById('confirmation-message').textContent = message;
+        document.getElementById('confirmation').style.display = 'block';
+    });
 
-                seatsSelection.appendChild(seatSelect);
-                seatsSelection.appendChild(document.createElement('br'));
-            }
-        }
-    }
+    // Ініціалізуємо вибір місць при завантаженні сторінки
+    updateSeats();
+});
