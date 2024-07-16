@@ -60,5 +60,19 @@
                     <label>Оберіть місця:</label>
                     <div id="seats-selection"></div>
                 </div>
+                <div class="form-group">
+                    <p>Ціна за квиток: <span id="ticket-price">500</span> грн</p>
+                </div>
+                <input type="hidden" id="price" value="500"> <!-- Приховане поле для фіксованої ціни -->
+                <button type="submit">Забронювати</button>
+                <button type="reset">Очистити</button>
+            </form>
+        </div>
+        <div id="confirmation" style="display:none;">
+            <h2>Підтвердження бронювання</h2>
+            <p id="confirmation-message"></p>
+        </div>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
