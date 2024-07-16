@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бронювання квитків</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Сервіс з бронювання авіаквитків</h1>
+    </header>
+    <main>
+        <div class="form-container">
+            <form id="booking-form">
+                <div class="form-group">
+                    <label for="full-name">ПІБ пасажира:</label>
+                    <input type="text" id="full-name" name="full-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="departure">Місце відправлення:</label>
+                    <select id="departure" name="departure" required>
+                        <option value="" disabled selected>Оберіть місце відправлення</option>
+                        <option value="Київ">Київ</option>
+                        <option value="Львів">Львів</option>
+                        <option value="Одеса">Одеса</option>
+                        <option value="Харків">Харків</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="destination">Місце прибуття:</label>
+                    <select id="destination" name="destination" required>
+                        <option value="" disabled selected>Оберіть місце прибуття</option>
+                        <option value="Київ">Київ</option>
+                        <option value="Львів">Львів</option>
+                        <option value="Одеса">Одеса</option>
+                        <option value="Харків">Харків</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Дата:</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="departure-time">Час вильоту:</label>
+                    <select id="departure-time" name="departure-time" required>
+                        <option value="" disabled selected>Оберіть час вильоту</option>
+                        <option value="08:00">08:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="12:00">12:00</option>
+                        <option value="14:00">14:00</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="passengers">Кількість пасажирів:</label>
+                    <input type="number" id="passengers" name="passengers" min="1" required>
+                </div>
+                <div id="seats-container" class="form-group">
+                    <label>Оберіть місця:</label>
+                    <div id="seats-selection"></div>
+                </div>
+                <div class="form-group">
+                    <p>Ціна за квиток: <span id="ticket-price">500</span> грн</p>
+                </div>
+                <input type="hidden" id="price" value="500"> 
+                <button type="submit">Забронювати</button>
+                <button type="reset">Очистити</button>
+            </form>
+        </div>
+        <div id="confirmation" style="display:none;">
+            <h2>Підтвердження бронювання</h2>
+            <p id="confirmation-message"></p>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
