@@ -1,0 +1,82 @@
+body {
+    height: 100vh;
+    position: relative;
+    font-family: Arial, sans-serif;
+    background-image: url("https://www.napolike.it/wp-content/uploads/2023/08/blue-sky-e1692179967934.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+header {
+   background-color: rgb(7, 16, 90);
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    border-radius: 20px;
+}
+
+main {
+    margin: 20px;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type=text], input[type=date], input[type=number], select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    background-color: rgb(7, 16, 90);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+#confirmation {
+    margin-top: 20px;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgb(7, 16, 90);
+    display: none; /* Приховуємо спливаюче вікно підтвердження за замовчуванням */
+}
+
+#confirmation h2 {
+    margin-bottom: 10px;
+}
+
+#confirmation-message {
+    white-space: pre-line;
+}
